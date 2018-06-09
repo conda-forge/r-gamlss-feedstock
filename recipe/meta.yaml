@@ -1,4 +1,4 @@
-{% set version = '5.0-2' %}
+{% set version = "5.1-0" %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
@@ -12,7 +12,7 @@ source:
   url:
     - https://cran.r-project.org/src/contrib/gamlss_{{ version }}.tar.gz
     - https://cran.r-project.org/src/contrib/Archive/gamlss/gamlss_{{ version }}.tar.gz
-  sha256: a4bdb99f96bda565331448bb63cb4a1debc184b98394a03f4e85d30cc7b3e7d0
+  sha256: 665f5289949177cd57d94aeb5fc07044d65a427fdf0bcae68b48533826f21102
 
 build:
   number: 0
