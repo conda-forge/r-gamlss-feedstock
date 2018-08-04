@@ -15,7 +15,8 @@ source:
   sha256: 665f5289949177cd57d94aeb5fc07044d65a427fdf0bcae68b48533826f21102
 
 build:
-  number: 0
+  merge_build_host: True  # [win]
+  number: 1
   skip: true  # [win32]
 
   rpaths:
@@ -23,15 +24,16 @@ build:
     - lib/
 requirements:
   build:
+    - posix                # [win]
+    - {{ compiler('c') }}        # [unix]
+    - {{ compiler('m2w64_c') }}  # [win]
+  host:
     - r-base
     - r-mass
     - r-gamlss.data >=5.0_0
     - r-gamlss.dist >=4.3.1
     - r-nlme
     - r-survival
-    - posix                # [win]
-    - {{native}}toolchain  # [win]
-    - gcc                  # [not win]
 
   run:
     - r-base
@@ -40,7 +42,6 @@ requirements:
     - r-gamlss.dist >=4.3.1
     - r-nlme
     - r-survival
-    - libgcc  # [not win]
 
 test:
   commands:
