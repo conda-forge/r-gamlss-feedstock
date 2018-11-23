@@ -7,7 +7,7 @@ Package license: GPL-2 | GPL-3
 
 Feedstock license: BSD 3-Clause
 
-Summary: Functions for fitting Generalized Additive Models for Location Scale and Shape.
+Summary: Functions for fitting the Generalized Additive Models for Location Scale and Shape introduced by Rigby and Stasinopoulos (2005), <doi:10.1111/j.1467-9876.2005.00510.x>. The models use a distributional regression approach where all the parameters of the conditional distribution of the response variable are modelled using explanatory variables.
 
 
 
