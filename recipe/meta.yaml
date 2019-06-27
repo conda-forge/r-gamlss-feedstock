@@ -1,5 +1,4 @@
-{% set version = '5.1-2' %}
-
+{% set version = '5.1-4' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -8,29 +7,27 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: gamlss_{{ version }}.tar.gz
   url:
     - {{ cran_mirror }}/src/contrib/gamlss_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/gamlss/gamlss_{{ version }}.tar.gz
-  sha256: 0d404e74768a8f98c6a5e9a48bd2cf4280125831a5dcd8c7f7b57922f57e016b
+  sha256: e2fc36fe6ca3a69d69cdafd9533a4ff35090fdfb01df126f6a49156f4aa3376c
 
 build:
   merge_build_host: True  # [win]
-  number: 1000
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
-    - {{ compiler('c') }}        # [not win]
-    - {{native}}toolchain        # [win]
+    - {{ compiler('c') }}              # [not win]
+    - {{ compiler('m2w64_c') }}        # [win]
     - {{posix}}filesystem        # [win]
     - {{posix}}make
     - {{posix}}sed               # [win]
     - {{posix}}coreutils         # [win]
     - {{posix}}zip               # [win]
-
   host:
     - r-base
     - r-mass
@@ -38,7 +35,6 @@ requirements:
     - r-gamlss.dist >=4.3.1
     - r-nlme
     - r-survival
-
   run:
     - r-base
     - {{native}}gcc-libs         # [win]
@@ -62,10 +58,26 @@ about:
     the conditional distribution of the response variable are modelled using explanatory
     variables.
   license_family: GPL3
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
 
 extra:
   recipe-maintainers:
-    - dpryan79
-    - johanneskoester
-    - bgruening
-    - daler
+    - conda-forge/r
+
+# Package: gamlss
+# Description: Functions for fitting the Generalized Additive Models for Location Scale and Shape introduced by Rigby and Stasinopoulos (2005), <doi:10.1111/j.1467-9876.2005.00510.x>. The models use a distributional regression approach where all the parameters of the conditional distribution of the response variable are modelled using explanatory variables.
+# Version: 5.1-4
+# Date: 2019-05-18
+# Authors@R: c(person("Mikis", "Stasinopoulos", role = c("aut", "cre", "cph"),  email = "d.stasinopoulos@londonmet.ac.uk"), person("Bob", "Rigby", role = c("aut")),  person("Vlasios", "Voudouris", role = "ctb",   email= "vlasios.voudouris@abm-analytics.com"), person("Calliope", "Akantziliotou", role = "ctb"), person("Marco", "Enea", role = "ctb"), person("Daniil", "Kiose", role = "ctb")  )
+# Title: Generalised Additive Models for Location Scale and Shape
+# Maintainer: Mikis Stasinopoulos <d.stasinopoulos@londonmet.ac.uk>
+# Depends: R (>= 3.3.0), graphics, stats, splines, utils, grDevices, gamlss.data (>= 5.0-0), gamlss.dist (>= 4.3.1), nlme, parallel
+# LazyLoad: yes
+# Imports: MASS, survival, methods
+# License: GPL-2 | GPL-3
+# URL: http://www.gamlss.org/
+# NeedsCompilation: yes
+# Packaged: 2019-05-18 08:35:01 UTC; MikisStasinopoulos
+# Author: Mikis Stasinopoulos [aut, cre, cph], Bob Rigby [aut], Vlasios Voudouris [ctb], Calliope Akantziliotou [ctb], Marco Enea [ctb], Daniil Kiose [ctb]
+# Repository: CRAN
+# Date/Publication: 2019-05-18 09:10:03 UTC
