@@ -1,4 +1,4 @@
-{% set version = "5.1-6" %}
+{% set version = "5.1-7" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/gamlss_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/gamlss/gamlss_{{ version }}.tar.gz
-  sha256: b9c9a21343ed7777c239d8c5ad63b6f6efa0254bfcd6eaf66a74c319268b6799
+  sha256: 8811bc069ab34eb40138a2d0c99465850613257dbabd7059b44f9a49aee6987b
 
 build:
-  merge_build_host: True  # [win]
-  number: 1
+  merge_build_host: true  # [win]
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
@@ -52,13 +52,10 @@ test:
 about:
   home: http://www.gamlss.org/
   license: GPL-2 | GPL-3
-  summary: Functions for fitting the Generalized Additive Models for Location Scale and Shape
-    introduced by Rigby and Stasinopoulos (2005), <doi:10.1111/j.1467-9876.2005.00510.x>.
-    The models use a distributional regression approach where all the parameters of
-    the conditional distribution of the response variable are modelled using explanatory
-    variables.
+  summary: Functions for fitting the Generalized Additive Models for Location Scale and Shape introduced by Rigby and Stasinopoulos (2005), <doi:10.1111/j.1467-9876.2005.00510.x>. The models use a distributional regression approach where all the parameters of the conditional distribution of the response variable are modelled
+    using explanatory variables.
   license_family: GPL3
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
+  license_file: {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2
 
 extra:
   recipe-maintainers:
