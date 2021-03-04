@@ -1,4 +1,4 @@
-{% set version = "5.2-0" %}
+{% set version = "5.3-1" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/gamlss_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/gamlss/gamlss_{{ version }}.tar.gz
-  sha256: d3927547109064cbe7b0f955144f53204b5dc86c6b2dbc8f0551a74140ab02e1
+  sha256: 99474316dfdb620a539c9a56a38413ad8b118c03da815ca23595f7f8c933eed9
 
 build:
   merge_build_host: true  # [win]
